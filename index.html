@@ -1,0 +1,278 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayaan's Cats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-1: #fff5d6;
+      --bg-2: #ffe8a1;
+      --card: #fffef8;
+      --text: #191919;
+      --muted: #555555;
+      --banana: #ffd54f;
+      --mint: #77d4c2;
+      --sky: #73bdf7;
+      --coral: #ff8e72;
+      --shadow: 0 18px 36px rgba(25, 25, 25, 0.12);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255, 213, 79, 0.4), transparent 30%),
+        radial-gradient(circle at 85% 0%, rgba(115, 189, 247, 0.35), transparent 24%),
+        radial-gradient(circle at 90% 88%, rgba(119, 212, 194, 0.28), transparent 30%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .banana-shape {
+      position: fixed;
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      opacity: 0.22;
+      pointer-events: none;
+      animation: drift 9s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .banana-1 { top: 12%; left: 8%; animation-delay: 0s; }
+    .banana-2 { top: 32%; right: 8%; animation-delay: 1.7s; }
+    .banana-3 { bottom: 14%; left: 14%; animation-delay: 3.1s; }
+    .banana-4 { bottom: 6%; right: 16%; animation-delay: 4.5s; }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(-14px) rotate(8deg); }
+    }
+
+    .container {
+      width: min(1050px, 92vw);
+      margin: 0 auto;
+      padding: 2.2rem 0 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.52));
+      box-shadow: var(--shadow);
+      padding: clamp(1.4rem, 4vw, 2.8rem);
+      backdrop-filter: blur(10px);
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .chip {
+      width: fit-content;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: var(--banana);
+      border: 1.5px solid rgba(25, 25, 25, 0.1);
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #e08c00;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.95rem;
+    }
+
+    .card {
+      grid-column: span 6;
+      background: var(--card);
+      border: 1.5px solid rgba(25, 25, 25, 0.08);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      box-shadow: 0 10px 24px rgba(25, 25, 25, 0.07);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: reveal 600ms ease forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 80ms; }
+    .card:nth-child(2) { animation-delay: 160ms; }
+    .card:nth-child(3) { animation-delay: 240ms; }
+    .card:nth-child(4) { animation-delay: 320ms; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 28px rgba(25, 25, 25, 0.12);
+    }
+
+    .cat-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+
+    .cat-name {
+      font-family: "Syne", sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+    }
+
+    .banana-badge {
+      font-size: 0.84rem;
+      font-weight: 700;
+      background: rgba(255, 213, 79, 0.4);
+      border: 1px solid rgba(25, 25, 25, 0.12);
+      border-radius: 999px;
+      padding: 0.3rem 0.65rem;
+    }
+
+    .cat-pic {
+      border-radius: 16px;
+      height: 175px;
+      display: grid;
+      place-items: center;
+      font-size: 3.2rem;
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba(25, 25, 25, 0.08);
+    }
+
+    .mango { background: linear-gradient(135deg, #ffd54f, #ffefad); }
+    .coco { background: linear-gradient(135deg, #73bdf7, #d9f0ff); }
+    .nala { background: linear-gradient(135deg, #77d4c2, #d9f7f0); }
+    .pixel { background: linear-gradient(135deg, #ff8e72, #ffd2c6); }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.98rem;
+    }
+
+    .footer {
+      margin-top: 1.15rem;
+      border-radius: var(--radius);
+      background: rgba(25, 25, 25, 0.92);
+      color: #f7f7f7;
+      padding: 1rem 1.15rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .footer strong {
+      color: var(--banana);
+      font-weight: 700;
+    }
+
+    @media (max-width: 860px) {
+      .card { grid-column: span 12; }
+      .cat-pic { height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="banana-shape banana-1">🍌</div>
+  <div class="banana-shape banana-2">🍌</div>
+  <div class="banana-shape banana-3">🍌</div>
+  <div class="banana-shape banana-4">🍌</div>
+
+  <main class="container">
+    <section class="hero">
+      <span class="chip">Ayaan's Cats</span>
+      <h1>Cats, Colour,<br>and Bananas.</h1>
+      <p>
+        Welcome to <span class="highlight">Ayaan's Cats</span> - a bright, modern, minimalist gallery where each cat gets a playful banana-themed spotlight.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Ayaan's cats showcase">
+      <article class="card">
+        <div class="cat-top">
+          <h2 class="cat-name">Mango</h2>
+          <span class="banana-badge">Bananas: 9/10</span>
+        </div>
+        <div class="cat-pic mango" aria-hidden="true">🐈</div>
+        <p>Professional napper, banana-box inspector, and owner of the sunniest windowsill in the house.</p>
+      </article>
+
+      <article class="card">
+        <div class="cat-top">
+          <h2 class="cat-name">Coco</h2>
+          <span class="banana-badge">Bananas: 8/10</span>
+        </div>
+        <div class="cat-pic coco" aria-hidden="true">🐈‍⬛</div>
+        <p>Midnight zoomie specialist. Loves chasing shadows and sitting near every yellow object available.</p>
+      </article>
+
+      <article class="card">
+        <div class="cat-top">
+          <h2 class="cat-name">Nala</h2>
+          <span class="banana-badge">Bananas: 10/10</span>
+        </div>
+        <div class="cat-pic nala" aria-hidden="true">😺</div>
+        <p>Fluffy diplomat with excellent purring manners and strong opinions about banana-shaped toys.</p>
+      </article>
+
+      <article class="card">
+        <div class="cat-top">
+          <h2 class="cat-name">Pixel</h2>
+          <span class="banana-badge">Bananas: 7/10</span>
+        </div>
+        <div class="cat-pic pixel" aria-hidden="true">😸</div>
+        <p>Curious explorer, keyboard walker, and quality-control manager for all banana snack deliveries.</p>
+      </article>
+    </section>
+
+    <br>
+
+    <iframe src="https://1drv.ms/p/c/128f2ebfde34e119/IQSuNrDM5VX2Qpq9qvdmKB9jAbS5UC4HJcVimBtoGLiaOWk?wdAr=1.7777777777777777&amp;wdEaaCheck=0" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+
+    <footer class="footer">
+      <p>Built for Ayaan's colorful cat crew.</p>
+      <p><strong>Bananas present:</strong> always.</p>
+    </footer>
+  </main>
+</body>
+</html>
