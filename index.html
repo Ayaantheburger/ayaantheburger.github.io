@@ -67,6 +67,53 @@
       z-index: 1;
     }
 
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1.5px solid rgba(25, 25, 25, 0.12);
+      box-shadow: 0 10px 24px rgba(25, 25, 25, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-title {
+      font-family: "Syne", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1.4px solid rgba(25, 25, 25, 0.15);
+      background: rgba(255, 255, 255, 0.84);
+      transition: transform 150ms ease, background 150ms ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    .nav-link.active {
+      background: var(--banana);
+    }
+
     .hero {
       border-radius: calc(var(--radius) + 6px);
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.52));
@@ -219,6 +266,14 @@
   <div class="banana-shape banana-4">🍌</div>
 
   <main class="container">
+    <nav class="navbar" aria-label="Main">
+      <span class="nav-title">Ayaan's Pages</span>
+      <div class="nav-links">
+        <a class="nav-link active" href="index.html">Cats</a>
+        <a class="nav-link" href="banana-potato.html">Bananas + Potatoes</a>
+      </div>
+    </nav>
+
     <section class="hero">
       <span class="chip">Ayaan's Cats</span>
       <h1>Cats, Colour,<br>and Bananas.</h1>
@@ -264,8 +319,11 @@
         <p>Curious explorer, keyboard walker, and quality-control manager for all banana snack deliveries.</p>
       </article>
     </section>
+
     <br>
+
     <iframe src="https://1drv.ms/p/c/128f2ebfde34e119/IQSuNrDM5VX2Qpq9qvdmKB9jAbS5UC4HJcVimBtoGLiaOWk?wdAr=1.7777777777777777&amp;wdEaaCheck=0" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+
     <footer class="footer">
       <p>Built for Ayaan's colorful cat crew.</p>
       <p><strong>Bananas present:</strong> always.</p>

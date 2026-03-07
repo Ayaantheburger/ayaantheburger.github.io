@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bananas and Potatoes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-1: #fff8d4;
+      --bg-2: #f8d47b;
+      --bg-3: #d9ae64;
+      --ink: #1d1d1d;
+      --card: rgba(255, 255, 255, 0.9);
+      --banana: #ffd54f;
+      --potato: #c2874f;
+      --shadow: 0 16px 34px rgba(29, 29, 29, 0.16);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 213, 79, 0.46), transparent 28%),
+        radial-gradient(circle at 88% 0%, rgba(194, 135, 79, 0.42), transparent 24%),
+        radial-gradient(circle at 76% 88%, rgba(255, 255, 255, 0.3), transparent 26%),
+        linear-gradient(150deg, var(--bg-1), var(--bg-2), var(--bg-3));
+      overflow-x: hidden;
+    }
+
+    .float {
+      position: fixed;
+      font-size: clamp(1.1rem, 2.4vw, 2rem);
+      opacity: 0.24;
+      pointer-events: none;
+      animation: bob 7s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .f1 { top: 10%; left: 8%; animation-delay: 0s; }
+    .f2 { top: 28%; right: 9%; animation-delay: 1s; }
+    .f3 { bottom: 14%; left: 14%; animation-delay: 2s; }
+    .f4 { bottom: 8%; right: 18%; animation-delay: 3s; }
+    .f5 { top: 52%; left: 46%; animation-delay: 1.4s; }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-6deg); }
+      50% { transform: translateY(-12px) rotate(6deg); }
+    }
+
+    .container {
+      width: min(1050px, 92vw);
+      margin: 0 auto;
+      padding: 2.2rem 0 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1.5px solid rgba(29, 29, 29, 0.12);
+      box-shadow: 0 10px 24px rgba(29, 29, 29, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-title {
+      font-family: "Syne", sans-serif;
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1.4px solid rgba(29, 29, 29, 0.15);
+      background: rgba(255, 255, 255, 0.84);
+      transition: transform 150ms ease, background 150ms ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    .nav-link.active {
+      background: var(--banana);
+    }
+
+    .hero {
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.56));
+      box-shadow: var(--shadow);
+      padding: clamp(1.3rem, 4vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+
+    .chip {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      border: 1.5px solid rgba(29, 29, 29, 0.1);
+    }
+
+    .chip.banana {
+      background: var(--banana);
+    }
+
+    .chip.potato {
+      background: #e0b17f;
+    }
+
+    h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      line-height: 1.6;
+      color: #4c4c4c;
+    }
+
+    .emoji-river {
+      margin-top: 0.95rem;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      white-space: nowrap;
+      overflow: hidden;
+      border-radius: 12px;
+      padding: 0.55rem 0.8rem;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1.2px solid rgba(29, 29, 29, 0.1);
+    }
+
+    .emoji-river span {
+      display: inline-block;
+      animation: slide 20s linear infinite;
+      padding-right: 2rem;
+    }
+
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.95rem;
+    }
+
+    .card {
+      grid-column: span 4;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1.4px solid rgba(29, 29, 29, 0.08);
+      box-shadow: 0 10px 24px rgba(29, 29, 29, 0.08);
+      padding: 1rem;
+    }
+
+    .card h2 {
+      font-family: "Syne", sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      line-height: 1.55;
+      color: #505050;
+      margin-bottom: 0.7rem;
+    }
+
+    .pile {
+      font-size: 1.5rem;
+      letter-spacing: 0.18rem;
+      line-height: 1.4;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      border-radius: var(--radius);
+      background: rgba(29, 29, 29, 0.93);
+      color: #fafafa;
+      padding: 1rem;
+      font-size: 0.96rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer strong {
+      color: var(--banana);
+    }
+
+    @media (max-width: 900px) {
+      .card { grid-column: span 6; }
+    }
+
+    @media (max-width: 640px) {
+      .card { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <div class="float f1">🍌</div>
+  <div class="float f2">🥔</div>
+  <div class="float f3">🍌</div>
+  <div class="float f4">🥔</div>
+  <div class="float f5">🍌🥔</div>
+
+  <main class="container">
+    <nav class="navbar" aria-label="Main">
+      <span class="nav-title">Ayaan's Pages</span>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Cats</a>
+        <a class="nav-link active" href="banana-potato.html">Bananas + Potatoes</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="chip-row">
+        <span class="chip banana">Banana Mode</span>
+        <span class="chip potato">Potato Mode</span>
+      </div>
+      <h1>Bananas.<br>Potatoes.<br>More Bananas.</h1>
+      <p>
+        This page is proudly overflowing with bananas and potatoes. If you look closely, there are still more bananas and potatoes.
+      </p>
+      <div class="emoji-river" aria-hidden="true">
+        <span>🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔</span>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Banana and potato content">
+      <article class="card">
+        <h2>Banana Pile</h2>
+        <p>A carefully curated stack of premium bananas.</p>
+        <div class="pile" aria-hidden="true">🍌 🍌 🍌 🍌 🍌 🍌 🍌 🍌 🍌</div>
+      </article>
+
+      <article class="card">
+        <h2>Potato Pile</h2>
+        <p>A powerful formation of sturdy, heroic potatoes.</p>
+        <div class="pile" aria-hidden="true">🥔 🥔 🥔 🥔 🥔 🥔 🥔 🥔 🥔</div>
+      </article>
+
+      <article class="card">
+        <h2>Mixed Pile</h2>
+        <p>The ultimate combo: bananas and potatoes living in harmony.</p>
+        <div class="pile" aria-hidden="true">🍌 🥔 🍌 🥔 🍌 🥔 🍌 🥔 🍌</div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <p>Bananas in attendance: <strong>many</strong>.</p>
+      <p>Potatoes in attendance: <strong>many</strong>.</p>
+    </footer>
+  </main>
+</body>
+</html>
